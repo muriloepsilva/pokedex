@@ -2,7 +2,13 @@ import api from "./api";
 
 export async function requestPokemons() {
   const response = await api.get("/");
-  if (response.data.results) return response.data.results;
+  if (response.data.results) {
+    return Promise.all(
+      response.data.results.map(async ({ name }) => {
+        return requestPokemonDetails(name);
+      })
+    );
+  }
   return null;
 }
 

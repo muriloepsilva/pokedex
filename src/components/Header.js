@@ -2,14 +2,21 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import { Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import CatchingPokemonTwoToneIcon from "@mui/icons-material/CatchingPokemonTwoTone";
 
-export default function Header(props) {
-  const { pageName } = props;
+import { convertToStartCase } from "../utils/functions";
+
+export default function Header({ pageName }) {
+  const navigate = useNavigate();
+  function handleClick() {
+    navigate(`/`);
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }} marginBottom={"3%"}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: "red" }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -17,11 +24,12 @@ export default function Header(props) {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={() => handleClick()}
           >
-            <MenuIcon />
+            <CatchingPokemonTwoToneIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            {pageName}
+            {convertToStartCase(pageName)}
           </Typography>
         </Toolbar>
       </AppBar>
