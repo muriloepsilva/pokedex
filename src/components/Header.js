@@ -8,7 +8,7 @@ import CatchingPokemonTwoToneIcon from "@mui/icons-material/CatchingPokemonTwoTo
 
 import { convertToStartCase } from "../utils/functions";
 
-export default function Header({ pageName }) {
+export default function Header({ pageName, refetch }) {
   const navigate = useNavigate();
   function handleClick() {
     navigate(`/`);
