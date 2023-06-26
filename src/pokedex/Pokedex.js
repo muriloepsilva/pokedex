@@ -1,7 +1,6 @@
 import { requestPokemons } from "../infra/requests";
 import { Container } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-
 import Header from "../components/Header";
 import PokemonCard from "./Components/PokemonCard";
 import { useQuery } from "react-query";

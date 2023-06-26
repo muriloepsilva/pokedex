@@ -37,7 +37,7 @@ export default function LinearBuffer() {
         variant="buffer"
         value={progress}
         valueBuffer={buffer}
-        color="inherit"
+        color="secondary"
       />
     </Box>
   );

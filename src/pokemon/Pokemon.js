@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { requestPokemonDetails } from "../infra/requests";
 import Header from "../components/Header";
 import { useParams } from "react-router-dom";
 import { Box, Container, Typography } from "@mui/material";
 
 import { convertToStartCase } from "../utils/functions";
+import { FavoriteContext } from "../favorites/context/favoriteContext";
 
 export default function Pokemon() {
   const { pokemon } = useParams();
+  const { favorites } = useContext(FavoriteContext);
   const [pokemonDetails, setPokemonDetails] = useState(null);
 
   useEffect(() => {
@@ -17,9 +19,15 @@ export default function Pokemon() {
     );
   }, [pokemon]);
 
+  const isFavorite = favorites.some((favorite) => pokemon === favorite.name);
+
   return (
     <>
-      <Header pageName={pokemon}></Header>
+      <Header
+        pageName={pokemon}
+        isFavorite={isFavorite}
+        pokemonDetails={pokemonDetails}
+      />
       <Container maxWidth="lg">
         <Box mt={2}>
           <img
